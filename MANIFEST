@@ -1,0 +1,12 @@
+MANIFEST
+LICENSE
+README
+Todo
+Changes
+lib/Archive/Tar/Streamed.pm
+t/01_stream.t
+t/02_check_tar.t
+t/03_read_tar.t
+t/10_tar_of_a_tar.t
+Makefile.PL
+META.yml                                 Module meta-data (added by MakeMaker)
