@@ -4,7 +4,7 @@ use strict;
 
 BEGIN {
 	use vars qw ($VERSION @ISA);
-	$VERSION     = 0.02;
+	$VERSION     = 0.03;
 }
 
 use Archive::Tar;
@@ -29,8 +29,11 @@ sub add {
 sub next {
     my $self = shift;
 
+    $self->{pending} ||= [];
+    return shift @{$self->{pending}} if @{$self->{pending}};
     my $arch = Archive::Tar->new;
-    my ($fil) = $arch->read( $self->{file}, 0, {limit => 1});
+    my ($fil,@pend) = $arch->read( $self->{file}, 0, {limit => 1});
+    $self->{pending} = \@pend;
     $fil;
 }
 
